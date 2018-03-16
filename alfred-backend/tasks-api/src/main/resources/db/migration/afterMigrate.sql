@@ -8,4 +8,4 @@ VALUES
     ('Title 4', 'Description 4'),
     ('Title 5', 'Description 5'),
     ('Title 6', 'Description 6'),
-    ('Title 7', 'Description 7'),
+    ('Title 7', 'Description 7');

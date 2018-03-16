@@ -13,33 +13,7 @@ class App extends Component {
 
     this.state = {
       searchFor: '',
-      tasks: [
-        {
-          title: 'Finish Project',
-          description: 'SECA PROJECT NUMBER 2',
-          date: '11/11/1996'
-        }, {
-          title: 'Christines Birthday',
-          description: 'Buy her something nice',
-          date: '3/28/2018'
-        }, {
-          title: 'Title1',
-          description: 'description1',
-          date: 'ya mum'
-        }, {
-          title: 'Title3',
-          description: 'description2',
-          date: 'ya mum'
-        }, {
-          title: 'Title3',
-          description: 'description3',
-          date: 'ya mum'
-        }, {
-          title: 'Title4',
-          description: 'description4',
-          date: 'ya mum'
-        }
-      ],
+      tasks: [],
       memos: [],
       orders: [],
       support: []
@@ -47,8 +21,10 @@ class App extends Component {
   }
 
 
-  componentWillMount() {
-    //
+  async componentDidMount() {
+    await axios.get('/tasks').then((res) => {
+      this.setState({ tasks: res.data })
+    })
   }
 
   render() {
