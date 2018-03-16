@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 
 import SearchForm from "./SearchForm";
-import SearchList from './SearchList'
-import SearchItem from "./SearchItem";
-
+import SearchList from './SearchList';
 
 class SearchContainer extends Component {
     render() { 
         return ( 
             <div className='search-container'>
                 <SearchForm />
-                <SearchList />
+                <SearchList allTasks={this.props.allTasks}/>
             </div>
         )
     }

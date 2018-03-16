@@ -8,7 +8,7 @@ class Main extends Component {
         return ( 
             <div className='main'>
                 <div className="main--left">
-                    <SearchContainer />
+                    <SearchContainer allTasks={this.props.allTasks}/>
                 </div>
                 <div className="main--right">
                     <Buttons />

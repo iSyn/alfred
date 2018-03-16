@@ -11,7 +11,18 @@ class App extends Component {
     super();
 
     this.state = {
-      tasks: [],
+      searchFor: '',
+      tasks: [
+        {
+          title: 'Finish Project',
+          description: 'SECA PROJECT NUMBER 2',
+          date: '11/11/1996'
+        }, {
+          title: 'Christines Birthday',
+          description: 'Buy her something nice',
+          date: '3/28/2018'
+        }
+      ],
       memos: [],
       orders: [],
       support: []
@@ -21,7 +32,7 @@ class App extends Component {
 
   render() {
 
-    const DashboardComponent = () => ( <Dashboard /> );
+    const DashboardComponent = () => ( <Dashboard allTasks={this.state.tasks} /> );
 
     return (
       <Router>
