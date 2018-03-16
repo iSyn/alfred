@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import axios from 'axios';
 
 import './App.css';
 
@@ -21,6 +22,22 @@ class App extends Component {
           title: 'Christines Birthday',
           description: 'Buy her something nice',
           date: '3/28/2018'
+        }, {
+          title: 'Title1',
+          description: 'description1',
+          date: 'ya mum'
+        }, {
+          title: 'Title3',
+          description: 'description2',
+          date: 'ya mum'
+        }, {
+          title: 'Title3',
+          description: 'description3',
+          date: 'ya mum'
+        }, {
+          title: 'Title4',
+          description: 'description4',
+          date: 'ya mum'
         }
       ],
       memos: [],
@@ -29,6 +46,10 @@ class App extends Component {
     }
   }
 
+
+  componentWillMount() {
+    //
+  }
 
   render() {
 
