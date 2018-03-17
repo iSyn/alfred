@@ -15,7 +15,7 @@ public class MemoApiApplication {
 		SpringApplication.run(MemoApiApplication.class, args);
 	}
 
-	@GetMapping("/"_)
+	@GetMapping("/")
 	public String home() {
 		return "homepage of songs API";
 	}

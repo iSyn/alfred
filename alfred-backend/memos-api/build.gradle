@@ -36,4 +36,5 @@ dependencies {
 	compile 'org.springframework.cloud:spring-cloud-starter-eureka'
 	runtime 'org.postgresql:postgresql'
 	compile 'org.flywaydb:flyway-core'
+	compileOnly 'org.projectlombok:lombok'
 }
