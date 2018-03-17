@@ -8,7 +8,7 @@ class Dashboard extends Component {
         return ( 
             <div>
                 <Header />
-                <Main allTasks={this.props.allTasks}/>
+                <Main allActivity={this.props.allActivity}/>
             </div>
         )
     }

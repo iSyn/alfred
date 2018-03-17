@@ -4,11 +4,15 @@ import SearchForm from "./SearchForm";
 import SearchList from './SearchList';
 
 class SearchContainer extends Component {
+
     render() { 
+
+        console.log("ASASDA", this.props);
+
         return ( 
             <div className='search-container'>
                 <SearchForm />
-                <SearchList allTasks={this.props.allTasks}/>
+                <SearchList allActivity={this.props.allActivity}/>
             </div>
         )
     }

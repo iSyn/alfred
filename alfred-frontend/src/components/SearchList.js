@@ -9,8 +9,8 @@ class SearchList extends Component {
             <div>
                 <h3 style={{ textAlign: 'center', marginTop: '10px'}}>Recent Activity</h3>
                 {
-                    this.props.allTasks.map((task, index) => {
-                        return <SearchItem key={index} task={task}/>
+                    this.props.allActivity.map((activity, index) => {
+                        return <SearchItem key={index} activity={activity}/>
                     })
                 }
             </div>
