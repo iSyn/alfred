@@ -14,14 +14,15 @@ const SearchItem = (props) => {
         color = '#e8b94e';
     }
 
-    console.log('PROPS', props)
+
+    let date = new Date(props.activity.timestamp).toLocaleString()
 
     return (
         <div className='search-item' style={{ borderLeft: `10px solid ${color}` }}>
             <i className='fa fa-times fa-1x'></i>
             <h3>{props.activity.title}</h3>
             <p>{props.activity.description}</p>
-            <p>{props.activity.timestamp}</p>
+            <p>{date}</p>
         </div>
     )
 }

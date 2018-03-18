@@ -12,7 +12,7 @@ class App extends Component {
     super();
 
     this.state = {
-      searchFor: '',
+      searchingFor: '',
       tasks: [],
       memos: [],
       orders: [],
@@ -40,14 +40,33 @@ class App extends Component {
       this.setState({ memos })
     })
 
+    await axios.get('/orders').then((res) => {
+      let orders = res.data.map(order => {
+        let data = Object.assign({}, order);
+        data.type = 3;
+        return data;
+      });
+      this.setState({ orders });
+    })
+
     let allActivity = this.state.tasks.concat(this.state.memos, this.state.orders, this.state.support);
-    allActivity.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+    allActivity.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
     this.setState({ allActivity });
+  }
+
+  searchFor = (searchingFor) => {
+    this.setState({ searchingFor })
   }
 
   render() {
 
-    const DashboardComponent = () => ( <Dashboard allActivity={this.state.allActivity} /> );
+    const DashboardComponent = () => ( 
+      <Dashboard 
+        allActivity={this.state.allActivity} 
+        searchingFor={this.state.searchingFor}
+        searchFor={this.searchFor}
+      /> 
+    );
 
     return (
       <Router>

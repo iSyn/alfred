@@ -11,8 +11,8 @@ class SearchContainer extends Component {
 
         return ( 
             <div className='search-container'>
-                <SearchForm />
-                <SearchList allActivity={this.props.allActivity}/>
+                <SearchForm searchFor={this.props.searchFor}/>
+                <SearchList allActivity={this.props.allActivity} searchingFor={this.props.searchingFor}/>
             </div>
         )
     }

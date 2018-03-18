@@ -9,7 +9,11 @@ class Main extends Component {
         return ( 
             <div className='main'>
                 <div className="main--left">
-                    <SearchContainer allActivity={this.props.allActivity}/>
+                    <SearchContainer 
+                        allActivity={this.props.allActivity} 
+                        searchingFor={this.props.searchingFor}
+                        searchFor={this.props.searchFor}
+                    />
                 </div>
                 <div className="main--right">
                     <Buttons />

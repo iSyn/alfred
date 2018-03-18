@@ -27,7 +27,7 @@ body {
   min-height: calc(100vh - 110px);
   min-width: 500px;
   background: #EAE7DC;
-  width: 80%;
+  width: 85%;
   left: 50%;
   transform: translateX(-50%);
   border-top-left-radius: 25px;
@@ -87,6 +87,11 @@ body {
 
 .search-container {
   padding: 10px;
+}
+
+.search-list > h3 {
+  text-align: center;
+  margin-top: 10px; 
 }
 
 .search-form {
