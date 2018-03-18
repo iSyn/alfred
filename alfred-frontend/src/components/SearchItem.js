@@ -14,13 +14,14 @@ const SearchItem = (props) => {
         color = '#e8b94e';
     }
 
-    console.log(props)
+    console.log('PROPS', props)
 
     return (
         <div className='search-item' style={{ borderLeft: `10px solid ${color}` }}>
+            <i className='fa fa-times fa-1x'></i>
             <h3>{props.activity.title}</h3>
             <p>{props.activity.description}</p>
-            <p>{props.activity.date}</p>
+            <p>{props.activity.timestamp}</p>
         </div>
     )
 }

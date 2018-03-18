@@ -13,36 +13,8 @@ class App extends Component {
 
     this.state = {
       searchFor: '',
-      tasks: [
-        {
-          title: 'task1',
-          description: 'description1',
-          type: 1
-        }, {
-          title: 'task2',
-          description: 'description',
-          type: 1
-        }, {
-          title: 'task3',
-          description: 'description',
-          type: 1
-        }
-      ],
-      memos: [
-        {
-          title: 'memo1',
-          description: 'description',
-          type: 2
-        }, {
-          title: 'memo2',
-          description: 'description',
-          type: 2
-        }, {
-          title: 'memo3',
-          description: 'description',
-          type: 2
-        }, 
-      ],
+      tasks: [],
+      memos: [],
       orders: [],
       support: [],
       allActivity: [],
@@ -50,21 +22,27 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    // await axios.get('/tasks').then((res) => {
+    await axios.get('/tasks').then((res) => {
+      let tasks = res.data.map((task) => {
+        let data = Object.assign({}, task);
+        data.type = 1;
+        return data;
+      })
+      this.setState({ tasks })
+    })
 
-    //   let tasks = res.data.map((task) => {
-    //     let data = Object.assign({}, task)
-    //     data.type = 1
-    //     return data
-    //   })
+    await axios.get('/memos').then((res) => {
+      let memos = res.data.map((memo) => {
+        let data = Object.assign({}, memo);
+        data.type = 2;
+        return data;
+      })
+      this.setState({ memos })
+    })
 
-    //   this.setState({ tasks })
-    // })
-
-    let allActivity = this.state.tasks.concat(this.state.memos, this.state.orders, this.state.support)
-    this.setState({ allActivity })
-
-    // console.log("STATE", this.state)
+    let allActivity = this.state.tasks.concat(this.state.memos, this.state.orders, this.state.support);
+    allActivity.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+    this.setState({ allActivity });
   }
 
   render() {
