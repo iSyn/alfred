@@ -11,17 +11,21 @@ a {
   text-decoration: none !important;
 }
 
-body {
-  background-color: #e16868;
+.alfred, .alfred--tasks, .alfred--memos, .alfred--orders, .alfred--support {
+  min-height: 100vh;
 }
+
+.alfred { background-color: #e16868; }
+.alfred--tasks { background-color: #b173e9; }
+.alfred--memos { background-color: #7397e9; }
+.alfred--orders { background-color: #4ee893; }
+.alfred--support { background-color: #e8b94e; }
 
 .header {
   font-family: 'IBM Plex Serif', serif;
-  /* font-size: 40px; */
   padding-left: 20%;
-  /* min-height: 110px;
-  height: 110px;
-  line-height: 110px; */
+  position: sticky;
+  top: 0px;
 }
 
 .header h1 {
@@ -37,6 +41,7 @@ body {
   min-height: calc(100vh - 110px);
   min-width: 500px;
   background: #EAE7DC;
+  top: 100vh;
   width: 85%;
   left: 50%;
   transform: translateX(-50%);
@@ -47,17 +52,25 @@ body {
   padding: 10px 10px 0px 10px;
 
   display: flex;
-  flex-flow: row nowrap;  
+  flex-flow: row nowrap;
+  animation: flyUpIn .7s forwards;  
+}
+
+@keyframes flyUpIn {
+  from {
+    top: 100vh;
+  }
+  to {
+    top: calc(0vh + 0px);
+  }
 }
 
 .main--left {
   width: 30%;
-  /* background-color: rgba(255, 0, 0, 0.1); */
 }
 
 .main--right {
   width: 70%;
-  /* background-color: rgba(0, 0, 255, 0.1); */
 }
 
 .buttons-container {

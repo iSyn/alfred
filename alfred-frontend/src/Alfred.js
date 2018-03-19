@@ -6,6 +6,7 @@ import './App.css';
 
 import Dashboard from './components/Dashboard';
 import Tasks from './components/Tasks'
+import Memos from './components/Memos'
 
 class App extends Component {
 
@@ -97,8 +98,11 @@ class App extends Component {
         allTasks={this.state.tasks}
         deleteTask={this.deleteTask.bind(this)}
       />
-    
     );
+
+    const MemosComponent = () => {
+      return <Memos />
+    }
 
 
     return (
@@ -106,6 +110,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={DashboardComponent} />
           <Route exact path='/tasks' render={TasksComponent} />
+          <Route exact path='/memos' render={MemosComponent} />
         </Switch>
       </Router>
     );

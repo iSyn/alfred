@@ -7,7 +7,7 @@ import TasksList from './TasksList';
 class Tasks extends Component {
   render() {
     return (
-      <div>
+      <div className='alfred--tasks'>
         <Header />
         <div className="main" style={{ borderColor: "#b173e9" }}>
           <TasksForm
