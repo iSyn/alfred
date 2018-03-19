@@ -65,15 +65,18 @@ class App extends Component {
     this.setState({ tasks })
   }
 
+  async addNewMemo(memo) {
+    await axios.post("/memos", memo)
+    let memos = [...this.state.memos]
+    memos.push(memo)
+    this.setState({ memos })
+  }
+
   deleteTask = async (task_id, task_index) => {
     await axios.delete(`/tasks/${task_id}`)
-
     let tasks = [...this.state.tasks]
     tasks.splice(task_index, 1)
-
     this.setState({ tasks })
-
-
   }
 
   searchFor = (searchingFor) => {
@@ -101,7 +104,10 @@ class App extends Component {
     );
 
     const MemosComponent = () => {
-      return <Memos />
+      return <Memos 
+        addNewMemo={this.addNewMemo.bind(this)}
+        allMemos={this.state.memos}
+      />
     }
 
 

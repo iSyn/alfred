@@ -21,7 +21,7 @@ public class TaskController {
     @GetMapping("/tasks/{task_id}")
     public Task findTaskById(@PathVariable Long task_id) throws NotFoundException {
         Task task = taskRepository.findById(task_id).get();
-        if (task == null) { throw new NotFoundException("Idea with ID of " + task_id + " was not found!"); }
+        if (task == null) { throw new NotFoundException("Task with ID of " + task_id + " was not found!"); }
         return task;
     }
 

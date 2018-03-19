@@ -9,11 +9,13 @@ class TasksItem extends Component {
         let date = new Date(this.props.task.timestamp).toLocaleString();
         
         return (  
-            <div className='task-item'>
+            <div className='task-item' style={{backgroundColor: "#b173e9"}}>
                 <i onClick={this.handleClick} className='fa fa-times fa-1x'></i>
-                <h3>{this.props.task.title}</h3>
+                <h1>{this.props.task.title}</h1>
+                <hr />
                 <p>{this.props.task.description}</p>
-                <p>{date}</p>
+
+                <p className='item-date'>created on: {date}</p>
             </div>
         )
     }

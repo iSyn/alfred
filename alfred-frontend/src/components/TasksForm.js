@@ -20,13 +20,18 @@ class TasksForm extends Component {
 
     render() { 
         return (  
-            <div className='task-form'>
+            <div className='task-form form'>
+                <h1>Create New Task</h1>
+                <br />
                 <form onSubmit={this.handleSubmit}>
-                    <h1>Task Title</h1>
+                    <h3>Title</h3>
                     <input type="text" name='title' placeholder='title'/>
+                    <br />
                     <h3>Description</h3>
-                    <input type="text" name='description' placeholder='description'/>
-                    <button>Submit</button>
+                    {/* <input type="text" name='description' placeholder='description'/> */}
+                    <textarea name="description" id="" cols="30" rows="5"></textarea>
+                    <br />
+                    <button>Submit <i className='fa fa-paper-plane-o fa-1x'></i></button>
                 </form>
             </div>
         )
