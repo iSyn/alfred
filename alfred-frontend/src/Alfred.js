@@ -5,6 +5,7 @@ import axios from 'axios';
 import './App.css';
 
 import Dashboard from './components/Dashboard';
+import Tasks from './components/Tasks'
 
 class App extends Component {
 
@@ -54,9 +55,31 @@ class App extends Component {
     this.setState({ allActivity });
   }
 
+  async addNewTask(task) {
+    await axios.post("/tasks", task)
+
+    let tasks = [...this.state.tasks]
+    tasks.push(task)
+
+    this.setState({ tasks })
+  }
+
+  deleteTask = async (task_id, task_index) => {
+    await axios.delete(`/tasks/${task_id}`)
+
+    let tasks = [...this.state.tasks]
+    tasks.splice(task_index, 1)
+
+    this.setState({ tasks })
+
+
+  }
+
   searchFor = (searchingFor) => {
     this.setState({ searchingFor })
   }
+
+
 
   render() {
 
@@ -68,10 +91,21 @@ class App extends Component {
       /> 
     );
 
+    const TasksComponent = () => (
+      <Tasks 
+        addNewTask={this.addNewTask.bind(this)} 
+        allTasks={this.state.tasks}
+        deleteTask={this.deleteTask.bind(this)}
+      />
+    
+    );
+
+
     return (
       <Router>
         <Switch>
           <Route exact path='/' render={DashboardComponent} />
+          <Route exact path='/tasks' render={TasksComponent} />
         </Switch>
       </Router>
     );

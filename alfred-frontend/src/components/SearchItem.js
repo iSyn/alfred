@@ -19,8 +19,8 @@ const SearchItem = (props) => {
 
     return (
         <div className='search-item' style={{ borderLeft: `10px solid ${color}` }}>
-            <i className='fa fa-times fa-1x'></i>
             <h3>{props.activity.title}</h3>
+            {props.activity.type == 3 ? <h3>New Order</h3> : null}
             <p>{props.activity.description}</p>
             <p>{date}</p>
         </div>

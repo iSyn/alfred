@@ -15,14 +15,6 @@ class SearchList extends Component {
             })
         }
 
-        // var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-
-        // const result = words.filter(word => word.length > 6);
-
-        // console.log(result);
-        // // expected output: Array ["exuberant", "destruction", "present"]
-
-
         return (   
             <div className='search-list'>
                 { this.props.searchingFor == '' ? <h3>Recent Activity</h3> : <h3>Searching for "{this.props.searchingFor}"</h3>}
