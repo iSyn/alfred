@@ -1,4 +1,4 @@
-![alfred-logo](./alfred-assets/alfred-logo.png)
+# Alfred - Your personal web butler
 
 Your personal web butler.
 
