@@ -23,7 +23,7 @@ class App extends Component {
     }
   }
 
-  async componentDidMount() {
+  async grabData() {
     await axios.get('/tasks').then((res) => {
       let tasks = res.data.map((task) => {
         let data = Object.assign({}, task);
@@ -54,6 +54,10 @@ class App extends Component {
     let allActivity = this.state.tasks.concat(this.state.memos, this.state.orders, this.state.support);
     allActivity.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
     this.setState({ allActivity });
+  }
+
+  componentDidMount() {
+    this.grabData()
   }
 
   async addNewTask(task) {

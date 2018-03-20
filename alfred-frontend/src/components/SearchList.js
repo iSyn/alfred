@@ -5,12 +5,23 @@ import SearchItem from './SearchItem'
 class SearchList extends Component {
     render() { 
 
-        let arr = this.props.allActivity.splice(0, 6);
+        let arr = this.props.allActivity
+
+        arr.splice(0, 6)
 
         if (this.props.searchingFor != '') {
-            arr = this.props.allActivity.filter((activity) => {
+
+            arr = this.props.allActivity;
+
+            arr.filter((activity) => {
                 if (activity.title) {
-                    return activity.title.includes(`${this.props.searchingFor}`);
+                    if (activity.title.includes(`${this.props.searchingFor}`)) {
+                        return activity;
+                    }
+                } else if (activity.description) {
+                    if (activity.description.includes(`${this.props.searchingFor}`)) {
+                        return activity;
+                    }
                 }
             })
         }
