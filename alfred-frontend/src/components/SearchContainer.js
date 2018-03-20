@@ -7,8 +7,6 @@ class SearchContainer extends Component {
 
     render() { 
 
-        console.log("ASASDA", this.props);
-
         return ( 
             <div className='search-container'>
                 <SearchForm searchFor={this.props.searchFor}/>

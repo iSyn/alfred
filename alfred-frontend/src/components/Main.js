@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Buttons from "./Buttons";
 import SearchContainer from './SearchContainer';
 import Graph from './Graph';
+import Details from './Details';
 
 class Main extends Component {
     render() { 
@@ -17,7 +18,12 @@ class Main extends Component {
                 </div>
                 <div className="main--right">
                     <Buttons />
-                    <Graph />
+                    <Graph 
+                        allOrders={this.props.allOrders}
+                    />
+                    <Details 
+                        currentState={this.props.currentState}
+                    />
                 </div>
             </div>
         )

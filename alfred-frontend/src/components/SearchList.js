@@ -3,11 +3,13 @@ import React, { Component } from 'react';
 import SearchItem from './SearchItem'
 
 class SearchList extends Component {
-    render() { 
 
-        let arr = this.props.allActivity
+    
+    render() {     
 
-        arr.splice(0, 6)
+        let arr = this.props.allActivity.splice(0, 6)
+
+        // console.log('arrrrray', arr)
 
         if (this.props.searchingFor != '') {
 

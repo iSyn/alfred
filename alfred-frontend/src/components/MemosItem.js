@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 
 class MemosItem extends Component {
    
-    handleClick = () => {
-        console.log('clicked')
-    }
+    handleClick = () => { this.props.deleteMemo(this.props.memo.id, this.props.index) }
 
     render() { 
 

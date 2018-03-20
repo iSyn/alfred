@@ -5,6 +5,9 @@ import Chart from 'chart.js'
 class Graph extends Component {
 
     componentDidMount() {
+
+        let orders = this.props.allOrders
+
         let ctx = document.querySelector('.graph-container').getContext('2d')
         let myChart = new Chart(ctx, {
             type: 'line',

@@ -7,6 +7,7 @@ import './App.css';
 import Dashboard from './components/Dashboard';
 import Tasks from './components/Tasks'
 import Memos from './components/Memos'
+import Orders from './components/Orders'
 
 class App extends Component {
 
@@ -20,6 +21,7 @@ class App extends Component {
       orders: [],
       support: [],
       allActivity: [],
+      loaded: false
     }
   }
 
@@ -53,7 +55,12 @@ class App extends Component {
 
     let allActivity = this.state.tasks.concat(this.state.memos, this.state.orders, this.state.support);
     allActivity.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-    this.setState({ allActivity });
+    this.setState({ 
+      allActivity,
+      loaded: true
+    });
+
+    
   }
 
   componentDidMount() {
@@ -76,6 +83,13 @@ class App extends Component {
     this.setState({ memos })
   }
 
+  async addNewOrder(order) {
+    await axios.post("/orders", order)
+    let orders = [...this.state.orders]
+    orders.push(order)
+    this.setState({ orders })
+  }
+
   deleteTask = async (task_id, task_index) => {
     await axios.delete(`/tasks/${task_id}`)
     let tasks = [...this.state.tasks]
@@ -83,11 +97,21 @@ class App extends Component {
     this.setState({ tasks })
   }
 
-  searchFor = (searchingFor) => {
-    this.setState({ searchingFor })
+  deleteMemo = async (memo_id, memo_index) => {
+    await axios.delete(`/memos/${memo_id}`)
+    let memos = [...this.state.memos]
+    memos.splice(memo_index, 1)
+    this.setState({ memos })
   }
 
+  deleteOrder = async (order_id, order_index) => {
+    await axios.delete(`/orders/${order_id}`)
+    let orders = [...this.state.orders]
+    orders.splice(order_index, 1)
+    this.setState({ orders })
+  }
 
+  searchFor = (searchingFor) => { this.setState({ searchingFor }) }
 
   render() {
 
@@ -96,6 +120,9 @@ class App extends Component {
         allActivity={this.state.allActivity} 
         searchingFor={this.state.searchingFor}
         searchFor={this.searchFor}
+        allOrders={this.state.orders}
+        currentState={this.state}
+        loaded={this.state.loaded}
       /> 
     );
 
@@ -111,9 +138,17 @@ class App extends Component {
       return <Memos 
         addNewMemo={this.addNewMemo.bind(this)}
         allMemos={this.state.memos}
+        deleteMemo={this.deleteMemo.bind(this)}
       />
     }
 
+    const OrdersComponent = () => {
+      return <Orders 
+        addNewOrder={this.addNewOrder.bind(this)}
+        allOrders={this.state.orders}
+        deleteOrder={this.deleteOrder.bind(this)}
+      />
+    }
 
     return (
       <Router>
@@ -121,6 +156,7 @@ class App extends Component {
           <Route exact path='/' render={DashboardComponent} />
           <Route exact path='/tasks' render={TasksComponent} />
           <Route exact path='/memos' render={MemosComponent} />
+          <Route exact path='/orders' render={OrdersComponent} />
         </Switch>
       </Router>
     );

@@ -17,11 +17,11 @@ class Buttons extends Component {
                 <a className='button button-memos' href="/memos">
                     <i className='fa fa-book fa-1x'></i> &nbsp; Memos
                 </a>
-                <a className='button button-orders' href="/tasks">
+                <a className='button button-orders' href="/orders">
                     <i className='fa fa-list fa-1x'></i> &nbsp; Orders
                 </a>
                 <a className='button button-support' href="/tasks">
-                    <i className='fa fa-questions fa-1x'></i> &nbsp; Support
+                    <i className='fa fa-question fa-1x'></i> &nbsp; Support
                 </a>
             </div>
         )

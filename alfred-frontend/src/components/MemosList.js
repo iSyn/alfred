@@ -11,7 +11,7 @@ class MemosList extends Component {
             <div className='memos-list list'>
                 {
                     arr.map((memo, index) => {
-                        return <MemosItem key={index} memo={memo} index={index} />
+                        return <MemosItem key={index} memo={memo} index={index} deleteMemo={this.props.deleteMemo} />
                     })
                 }
             </div>

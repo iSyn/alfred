@@ -72,6 +72,15 @@ textarea { resize: none; }
   width: 70%;
 }
 
+.main--bottom {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.graph-container {
+  width: 60%;
+}
+
 .buttons-container {
   display: flex;
   flex-flow: row nowrap;
@@ -152,12 +161,12 @@ textarea { resize: none; }
 
 .fa-times {
   float: right;
-  opacity: .2;
+  opacity: .5;
   cursor: pointer;
 }
 
 .fa-times:hover {
-  opacity: .5;
+  opacity: .8;
 }
 
 .form {
@@ -247,4 +256,31 @@ form button:hover .fa-paper-plane-o {
 .item-date {
   font-size: smaller;
   opacity: 0.4;
+}
+
+.details {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 60%;
+  padding: 10px;
+  font-family: 'Open Sans';
+}
+
+.details div {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-size: large;
+  color: #757575;
+  border: 1px solid #757575;
+  padding: 10px;
+  border-bottom: none;
+}
+
+.details div:last-child {
+  border-bottom: 1px solid #757575;
+}
+
+.details div > p:first-of-type {
+  flex-grow: 1;
 }

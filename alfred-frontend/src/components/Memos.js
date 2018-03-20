@@ -12,7 +12,7 @@ class Memos extends Component {
 				<Header />
 				<div className="main" style={{ borderColor: "#7297e9" }}>
 					<MemosForm addNewMemo={this.props.addNewMemo} />
-					<MemosList allMemos={this.props.allMemos} />
+					<MemosList allMemos={this.props.allMemos} deleteMemo={this.props.deleteMemo} />
 				</div>
 			</div>
     )
