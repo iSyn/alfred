@@ -21,6 +21,13 @@ With Alfred, you will have all the tools and information needed to manage your b
 - PSQL
 ---
 
+### How to run the program.
+- Git clone this repository or download it.
+- In terminal, cd into /alfred-backend and type 'docker-compose up'
+- Open another terminal, cd into /alfred-frontend and type 'yarn start'
+- When everything finishes loading, visit http://localhost:3000 to see Alfred in action.
+- When done, press CTRL + C to shut down docker and for satefy measures, type 'docker-compose down'
+
 ### Proposal
 
 ##### A clear problem statement from the client
