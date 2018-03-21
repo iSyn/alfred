@@ -7,27 +7,8 @@ class SearchList extends Component {
     
     render() {     
 
-        let arr = this.props.allActivity.splice(0, 6)
-
-        // console.log('arrrrray', arr)
-
-        if (this.props.searchingFor != '') {
-
-            arr = this.props.allActivity;
-
-            arr.filter((activity) => {
-                if (activity.title) {
-                    if (activity.title.includes(`${this.props.searchingFor}`)) {
-                        return activity;
-                    }
-                } else if (activity.description) {
-                    if (activity.description.includes(`${this.props.searchingFor}`)) {
-                        return activity;
-                    }
-                }
-            })
-        }
-
+        let arr = []
+        this.props.searchingFor ? arr = this.props.searchResults : arr = this.props.allActivity
 
         return (   
             <div className='search-list'>

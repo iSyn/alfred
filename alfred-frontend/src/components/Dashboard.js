@@ -16,7 +16,8 @@ class Dashboard extends Component {
 						searchingFor={this.props.searchingFor}
 						searchFor={this.props.searchFor}
 						allOrders={this.props.allOrders}
-						currentState={this.props.currentState}
+            currentState={this.props.currentState}
+            searchResults={this.props.searchResults}
 					/> : null
         }
       </div>

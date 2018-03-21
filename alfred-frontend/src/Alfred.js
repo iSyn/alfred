@@ -16,6 +16,7 @@ class App extends Component {
 
     this.state = {
       searchingFor: '',
+      searchResults: [],
       tasks: [],
       memos: [],
       orders: [],
@@ -25,7 +26,7 @@ class App extends Component {
     }
   }
 
-  async grabData() {
+  componentDidMount = async () => {
     await axios.get('/tasks').then((res) => {
       let tasks = res.data.map((task) => {
         let data = Object.assign({}, task);
@@ -53,18 +54,16 @@ class App extends Component {
       this.setState({ orders });
     })
 
-    let allActivity = this.state.tasks.concat(this.state.memos, this.state.orders, this.state.support);
+    let allActivity = this.state.tasks.concat(this.state.memos, this.state.orders);
+
     allActivity.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
     this.setState({ 
-      allActivity,
-      loaded: true
+      allActivity, 
+      loaded: true, 
+      searchResults: allActivity
     });
 
-    
-  }
-
-  componentDidMount() {
-    this.grabData()
   }
 
   async addNewTask(task) {
@@ -111,7 +110,36 @@ class App extends Component {
     this.setState({ orders })
   }
 
-  searchFor = (searchingFor) => { this.setState({ searchingFor }) }
+  searchFor = (searchingFor) => { 
+    this.setState({ searchingFor })
+    
+    let searchResults = []
+   
+    for (let i = 0; i < this.state.allActivity.length; i++) {
+      if (this.state.allActivity[i].title) {
+        if (this.state.allActivity[i].title.includes(`${searchingFor}`)) {
+          searchResults.push(this.state.allActivity[i])
+        }
+      } else if (this.state.allActivity[i].description) {
+        if (this.state.allActivity[i].description.includes(`${searchingFor}`)) {
+          searchResults.push(this.state.allActivity[i])
+        }
+      } else if (this.state.allActivity[i].item_name) {
+        if (this.state.allActivity[i].item_name.includes(`${searchingFor}`)) {
+          searchResults.push(this.state.allActivity[i]);
+        }
+      } else if (this.state.allActivity[i].item_price) {
+        if (this.state.allActivity[i].item_price.includes(`${searchingFor}`)) {
+          searchResults.push(this.state.allActivity[i]);
+        }
+      }
+    }
+
+    if (this.state.searchingFor == '') { searchResults = this.state.allActivity }
+
+    this.setState({ searchResults })
+
+  }
 
   render() {
 
@@ -123,6 +151,7 @@ class App extends Component {
         allOrders={this.state.orders}
         currentState={this.state}
         loaded={this.state.loaded}
+        searchResults={this.state.searchResults}
       /> 
     );
 

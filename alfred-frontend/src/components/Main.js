@@ -14,6 +14,7 @@ class Main extends Component {
                         allActivity={this.props.allActivity} 
                         searchingFor={this.props.searchingFor}
                         searchFor={this.props.searchFor}
+                        searchResults={this.props.searchResults}
                     />
                 </div>
                 <div className="main--right">
