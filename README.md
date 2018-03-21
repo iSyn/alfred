@@ -30,10 +30,10 @@ With Alfred, you will have all the tools and information needed to manage your b
 Workflow issues as well as general confusion in a hectic environment.
 
 ##### Clearly present technical requirements of solving the business problem
-- Have a list of recent activity.
-- Be able to search through all activity
-- Be able to [view/create/delete/update] [tasks/memos/orders/support]
-- Have graphs to visualize data.
+- As a user, I would like to have a list of the recent activity.
+- As a user, I would like to be able to search through all activities.
+- As a user, I would like to [view, create, update, delete] my [tasks, memos, orders, support].
+- As a user, I would like to have graphs to help visualize the backend data.
 
 ##### Why monolith?
 Alfred is designed for small, up and coming businesses so the need of microservices would be an overkill. Implementing microservices would actually end up slowing performance unless your business is extremely successful.
